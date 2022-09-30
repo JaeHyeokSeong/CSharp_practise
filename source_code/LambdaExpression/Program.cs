@@ -53,6 +53,8 @@
         public LambdaExpressionWithFunc()
         {
             // Func 를 사용하면 따로 대리자를 정의할 필요없이 간편하게 사용할 수 있다.
+            // Func 는 항상 리턴 타입이 있다 그리고 parameter 에는 최대 16개까지 들어올수있다
+            // 만약 16개를 넘어서면 에러가 발생함.
             Func<int, int> square = (i) => i * i;
             Console.WriteLine(square(10));
         }
