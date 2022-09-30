@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilePractise", "FilePractis
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollectionPractise", "CollectionPractise\CollectionPractise.csproj", "{781EB741-67CF-46A4-B41F-EAB9279246A2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LambdaExpression", "LambdaExpression\LambdaExpression.csproj", "{D54986A7-82D3-4967-933C-200496607961}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{781EB741-67CF-46A4-B41F-EAB9279246A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{781EB741-67CF-46A4-B41F-EAB9279246A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{781EB741-67CF-46A4-B41F-EAB9279246A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D54986A7-82D3-4967-933C-200496607961}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D54986A7-82D3-4967-933C-200496607961}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D54986A7-82D3-4967-933C-200496607961}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D54986A7-82D3-4967-933C-200496607961}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
