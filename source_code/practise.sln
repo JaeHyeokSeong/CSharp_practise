@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQ_Practise1", "LINQ_Prac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilePractise", "FilePractise\FilePractise.csproj", "{FD566EA2-81B9-42CE-95E5-5E9D79A2176D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollectionPractise", "CollectionPractise\CollectionPractise.csproj", "{781EB741-67CF-46A4-B41F-EAB9279246A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{FD566EA2-81B9-42CE-95E5-5E9D79A2176D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD566EA2-81B9-42CE-95E5-5E9D79A2176D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD566EA2-81B9-42CE-95E5-5E9D79A2176D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{781EB741-67CF-46A4-B41F-EAB9279246A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{781EB741-67CF-46A4-B41F-EAB9279246A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{781EB741-67CF-46A4-B41F-EAB9279246A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{781EB741-67CF-46A4-B41F-EAB9279246A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
