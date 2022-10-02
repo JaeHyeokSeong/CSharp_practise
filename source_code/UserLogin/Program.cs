@@ -10,7 +10,7 @@
             do
             {
                 if (choice == 1)
-                    Console.WriteLine("Comming soon");
+                    login.TryLogin();
                 else if (choice == 2)
                     login.InsertNewUser();
                 else if (choice == 3)

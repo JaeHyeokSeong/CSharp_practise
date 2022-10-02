@@ -66,6 +66,42 @@ namespace UserLogin
                 }
             }
         }
+        public void TryLogin()
+        {
+            // 로그인 구현 하기
+            using (MySqlConnection connection = new MySqlConnection(strConn))
+            {
+                string emailAddress = ReadStr("Enter email address> ");
+                string password = ReadStr("Enter password> ");
+                try
+                {
+                    string select_query = "SELECT email_address, password FROM user";
+                    connection.Open();
+
+                    MySqlCommand cmd = new MySqlCommand(select_query, connection);
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        if ((string)rdr["email_address"] == emailAddress && (string)rdr["password"] == password)
+                        {
+                            Console.WriteLine("Login Success");
+                            return;
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("[Warning] Error happened while login");
+                    Console.WriteLine(e.Message);
+                    Console.WriteLine(e.HelpLink);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+                Console.WriteLine("Login Fail");
+            }
+        }
     }
 }
 
