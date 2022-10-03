@@ -5,7 +5,7 @@
         public static void Main(string[] args)
         {
             Login login = new Login();
-            string message = "Enter 1 (login), 2 (new user), 3 (clear), -1 (exit) => ";
+            string message = "Enter 1 (login), 2 (new user), 3 (find password), 4 (clear), -1 (exit) => ";
             int choice = login.ReadInt(message);
             do
             {
@@ -14,6 +14,10 @@
                 else if (choice == 2)
                     login.InsertNewUser();
                 else if (choice == 3)
+                {
+                    login.FindPassword();
+                }
+                else if (choice == 4)
                     Console.Clear();
                 choice = login.ReadInt(message);
             } while (choice != -1);

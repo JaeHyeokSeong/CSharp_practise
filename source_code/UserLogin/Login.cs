@@ -102,6 +102,43 @@ namespace UserLogin
                 Console.WriteLine("Login Fail");
             }
         }
+        public void FindPassword()
+        {
+            // 이메일 아이디 그리고 휴대폰 번호 입력하도록 하기
+            // 만약 두개가 모두 일치하다면 입력되어져있는 이메일 주소로 5자리 숫자를 보낸후 입력하다고 유도하기
+            string emailAddress = ReadStr("Enter email address> ");
+            int mobileNumber = ReadInt("Enter mobile number> +61 ");
+            // MySQL 서버에서 이메일 그리고 전화번호 읽은 후 일치하면 true 아니면 false
+            using (MySqlConnection connection = new MySqlConnection(strConn))
+            {
+                try
+                {
+                    connection.Open();
+                    string select_query = "SELECT email_address, mobile_number FROM user";
+                    MySqlCommand cmd = new MySqlCommand(select_query, connection);
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        if (emailAddress == (string)rdr["email_address"] && String.Format("+61 {0}",mobileNumber) == (string)rdr["mobile_number"])
+                        {
+                            Console.WriteLine("일치");
+                            // 5자리 랜덤 숫자 이메일로 보내주기 구현하기 
+                            return;
+                        }
+                    }
+                    Console.WriteLine("[Warning] Please enter email address and mobile number again");
+                } catch (Exception e)
+                {
+                    Console.WriteLine("[Warning] Error happened while finding a password");
+                    Console.WriteLine(e.Message);
+                    Console.WriteLine(e.HelpLink);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
     }
 }
 
