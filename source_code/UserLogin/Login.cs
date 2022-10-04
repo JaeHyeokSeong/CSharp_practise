@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Security.Cryptography;
 using MySql.Data.MySqlClient;
 
 namespace UserLogin
 {
     public class Login
     {
-        // 나중에 아이디 비밀번호 지우기 
-        const string strConn = "Server=localhost;Database=test_users;Uid=root;Pwd=비밀번호;";
+        // 나중에 아이디 비밀번호 지우기
+        string password = "";
+        string strConn;
         public Login()
         {
-
+            strConn = "Server=localhost;Database=test_users;Uid=root;Pwd=" + password + ";";
         }
         public string ReadStr(string message)
         {
@@ -121,15 +124,14 @@ namespace UserLogin
                     {
                         if (emailAddress == (string)rdr["email_address"] && String.Format("+61 {0}",mobileNumber) == (string)rdr["mobile_number"])
                         {
-                            Console.WriteLine("일치");
-                            // 5자리 랜덤 숫자 이메일로 보내주기 구현하기 
+                            Console.WriteLine("[Information] Confirmed");
                             return;
                         }
                     }
                     Console.WriteLine("[Warning] Please enter email address and mobile number again");
                 } catch (Exception e)
                 {
-                    Console.WriteLine("[Warning] Error happened while finding a password");
+                    Console.WriteLine("[Warning in Login class] Error happened while finding a password");
                     Console.WriteLine(e.Message);
                     Console.WriteLine(e.HelpLink);
                 }
