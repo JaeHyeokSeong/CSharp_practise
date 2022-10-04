@@ -111,6 +111,7 @@ namespace UserLogin
             // 만약 두개가 모두 일치하다면 입력되어져있는 이메일 주소로 5자리 숫자를 보낸후 입력하다고 유도하기
             string emailAddress = ReadStr("Enter email address> ");
             int mobileNumber = ReadInt("Enter mobile number> +61 ");
+            string? username = "";
             string? user_id = "";
             bool status = false;
             // MySQL 서버에서 이메일 그리고 전화번호 읽은 후 일치하면 true 아니면 false
@@ -119,7 +120,7 @@ namespace UserLogin
                 try
                 {
                     connection.Open();
-                    string select_query = "SELECT id, email_address, mobile_number FROM user";
+                    string select_query = "SELECT * FROM user";
                     MySqlCommand cmd = new MySqlCommand(select_query, connection);
                     MySqlDataReader rdr = cmd.ExecuteReader();
                     while (rdr.Read())
@@ -127,6 +128,7 @@ namespace UserLogin
                         if (emailAddress == (string)rdr["email_address"] && String.Format("+61 {0}",mobileNumber) == (string)rdr["mobile_number"])
                         {
                             user_id = rdr["id"].ToString();
+                            username = rdr["name"].ToString();
                             status = true;
                         }
                     }
@@ -146,11 +148,18 @@ namespace UserLogin
             }
             if (status)
             {
+                Random random = new Random();
+                string randomNumber = "";
+                for (int i = 0; i < 5; i++)
+                {
+                    randomNumber += random.Next(0, 9).ToString();
+                }
                 Email email = new Email();
                 email.Receiver = emailAddress;
                 email.Subject = "Authentication Number";
+                email.Body = String.Format("Hi {0}\n\nVerification code: {1}", username, randomNumber);
                 string? found_password = "";
-                if (email.SendAuthenticationNumber())
+                if (email.SendAuthenticationNumber(randomNumber))
                 {
                     using (MySqlConnection connection = new MySqlConnection(strConn))
                     {
@@ -165,8 +174,6 @@ namespace UserLogin
                                 found_password = rdr["password"].ToString();
                             }
                             rdr.Close();
-                            if (!status)
-                                Console.WriteLine("[Warning] Please enter email address and mobile number again");
                         }
                         catch (Exception e)
                         {

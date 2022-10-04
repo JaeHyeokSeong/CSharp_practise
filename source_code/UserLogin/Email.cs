@@ -77,7 +77,7 @@ namespace UserLogin
                 Console.WriteLine(e.HelpLink);
             }
         }
-        public bool SendAuthenticationNumber()
+        public bool SendAuthenticationNumber(string randomNumber)
         {
             bool status = false;
             // password 지우기
@@ -102,13 +102,6 @@ namespace UserLogin
                         }
                     }
                     rdr.Close();
-                    Random random = new Random();
-                    string randomNumber = "";
-                    for(int i = 0; i < 5; i++)
-                    {
-                        randomNumber += random.Next(0, 9).ToString();
-                    }
-                    body = randomNumber;
                     Send();
                     Console.WriteLine("Please check {0} email address and enter 5 numbers", receiver);
                     for(int i =0; i < 5; i++)
